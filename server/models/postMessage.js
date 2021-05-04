@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
 	title: String,
-	ingredient: String,
+	ingredient: [String],
 	creator: String,
 	instruction: [String],
-	selectedFile: [String],
+	selectedFile: String,
 	likeCount:{
 		type: Number,
 		default: 0

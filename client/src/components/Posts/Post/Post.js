@@ -33,7 +33,7 @@ const Post = ({post, setCurrentId}) => {
 			</div>
 			<div className={classes.details}>
 				<Typography variant="body2"
-				            color="textSecondary">dada
+				            color="textSecondary">
 					{/*{post.ingredient.map((ingredient) => <li>{ingredient}</li>)}*/}
 					{/*{post}*/}
 				</Typography>
@@ -45,10 +45,10 @@ const Post = ({post, setCurrentId}) => {
 			<CardContent>
 				<Typography variant="body2"
 				            color="textSecondary"
-				            component="p">hello
-					{/*{post.instruction.map((instruction) =>*/}
-					{/*	`${instruction}`*/}
-					{/*)}*/}
+				            component="p">
+					{post.instruction.map((instruction) =>
+						`${instruction}`
+					)}
 				</Typography>
 			</CardContent>
 			<CardActions className={classes.cardActions}>
