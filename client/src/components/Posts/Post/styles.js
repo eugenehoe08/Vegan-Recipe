@@ -49,4 +49,9 @@ export default makeStyles({
 		display: 'flex',
 		justifyContent: 'space-between',
 	},
+	instructions: {
+		display: "flex",
+		justifyContent: "space-between",
+		marginBottom: "10px"
+	}
 });

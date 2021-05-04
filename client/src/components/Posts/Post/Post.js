@@ -20,7 +20,7 @@ const Post = ({post, setCurrentId}) => {
 			           image={post.selectedFile}
 			           title={post.title}/>
 			<div className={classes.overlay}>
-				<Typography variant="h6">{post.creator}</Typography>
+				<Typography variant="h6">{post.title}</Typography>
 				<Typography variant="body2">{moment(post.createdAt)
 				.fromNow()}</Typography>
 			</div>
@@ -31,6 +31,11 @@ const Post = ({post, setCurrentId}) => {
 					<MoreHorizIcon fontSize="default"/>
 				</Button>
 			</div>
+			<Typography className={classes.title}
+			            gutterBottom
+			            variant="h5"
+			            component="h2"> Created by: {post.creator} </Typography>
+			<h3 style={{marginLeft:"20px"}}>Ingredients:</h3>
 			<div className={classes.details}>
 				<Typography variant="body2"
 				            color="textSecondary">
@@ -38,19 +43,18 @@ const Post = ({post, setCurrentId}) => {
 					{/*{post}*/}
 				</Typography>
 			</div>
-			<Typography className={classes.title}
-			            gutterBottom
-			            variant="h5"
-			            component="h2"> {post.title} </Typography>
-			<CardContent>
+			<h3 style={{marginLeft:"20px"}}>Instructions:</h3>
+			{/*<CardContent className={classes.instructions}>*/}
 				<Typography variant="body2"
 				            color="textSecondary"
 				            component="p">
-					{post.instruction.map((instruction) =>
-						`${instruction}`
-					)}
+					<ol>
+						{post.instruction.map((instruction) =>
+							<li>{instruction}</li>
+						)}
+					</ol>
 				</Typography>
-			</CardContent>
+			{/*</CardContent>*/}
 			<CardActions className={classes.cardActions}>
 				<Button size="small"
 				        color="primary"

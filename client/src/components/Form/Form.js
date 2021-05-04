@@ -29,17 +29,23 @@ const Form = ({currentId, setCurrentId}) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (post) setPostData(post);
+		if (post) {
+			setPostData(post);
+			// console.log(ingredientInput);
+			// setIngredientInput(post.ingredient);
+			// setInstructionInput(post.instruction);
+		};
 	}, [post])
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(postData);
 
 		if (currentId) {
 			dispatch(updatePost(currentId, postData));
 		} else {
 			dispatch(createPost(postData));
+			// console.log(postData);
 		}
 		clear();
 	}
@@ -89,7 +95,9 @@ const Form = ({currentId, setCurrentId}) => {
 			return i;
 		})
 		setIngredientInput(newIngredientInputFields);
-		setPostData({...postData, ingredient: ingredientInput});
+		setPostData({...postData, ingredient: ingredientInput.map(u=> {
+				return u.ingredient
+			})});
 		// console.log(postData);
 	};
 
@@ -98,11 +106,15 @@ const Form = ({currentId, setCurrentId}) => {
 			if (id === i.id) {
 				i[event.target.name] = event.target.value;
 			}
+			// console.log(i.instruction);
 			return i;
 		})
 		setInstructionInput(newInstructionInputFields);
-		setPostData({...postData, instruction: instructionInput});
+		setPostData({...postData, instruction: instructionInput.map(u=> {
+				return u.instruction
+			})});
 		// console.log(postData);
+		// instructionInput.map((u)=> console.log(u.instruction));
 	};
 
 
@@ -132,6 +144,12 @@ const Form = ({currentId, setCurrentId}) => {
 						<TextField name="ingredient"
 						           variant="outlined"
 						           label="Ingredient"
+						           fullWidth
+						           value={inputField.ingredient}
+						           onChange={(e) => handleIngredientChangeInput(inputField.id, e)}/>
+						<TextField name="amount"
+						           variant="outlined"
+						           label="Amount"
 						           fullWidth
 						           value={inputField.ingredient}
 						           onChange={(e) => handleIngredientChangeInput(inputField.id, e)}/>
