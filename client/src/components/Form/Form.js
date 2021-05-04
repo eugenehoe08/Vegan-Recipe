@@ -19,7 +19,7 @@ const Form = ({currentId, setCurrentId}) => {
 		selectedFile: ''
 	});
 	const [ingredientInput, setIngredientInput] = useState([{
-		id: uuidv4(), ingredient: ''
+		id: uuidv4(), ingredient: '', amount : 0
 	}]);
 	const [instructionInput, setInstructionInput] = useState([{
 		id: uuidv4(), instruction: ''
@@ -60,7 +60,7 @@ const Form = ({currentId, setCurrentId}) => {
 			selectedFile: ''
 		});
 		setIngredientInput([{
-			id: uuidv4(), ingredient: ''
+			id: uuidv4(), ingredient: '', amount:0
 		}])
 		setInstructionInput([{
 			id: uuidv4(), instruction: ''
@@ -68,7 +68,7 @@ const Form = ({currentId, setCurrentId}) => {
 	}
 
 	const handleAddIngredientField = () => {
-		setIngredientInput([...ingredientInput, {id: uuidv4(), ingredient: ''}])
+		setIngredientInput([...ingredientInput, {id: uuidv4(), ingredient: '', amount: 0}])
 	};
 
 	const handleRemoveIngredientField = (id) => {
@@ -151,7 +151,7 @@ const Form = ({currentId, setCurrentId}) => {
 						           variant="outlined"
 						           label="Amount"
 						           fullWidth
-						           value={inputField.ingredient}
+						           value={inputField.amount}
 						           onChange={(e) => handleIngredientChangeInput(inputField.id, e)}/>
 						<IconButton disabled={ingredientInput.length === 1}
 						            onClick={() => handleRemoveIngredientField(inputField.id)}>
