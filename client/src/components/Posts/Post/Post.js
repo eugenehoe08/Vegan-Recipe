@@ -13,6 +13,7 @@ import useStyles from './styles';
 const Post = ({post, setCurrentId}) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	// console.log(post);
 	return (
 		<Card className={classes.card}>
 			<CardMedia className={classes.media}
@@ -32,8 +33,9 @@ const Post = ({post, setCurrentId}) => {
 			</div>
 			<div className={classes.details}>
 				<Typography variant="body2"
-				            color="textSecondary">
-					{post.tags.map((tag) => `#${tag} `)}
+				            color="textSecondary">dada
+					{/*{post.ingredient.map((ingredient) => <li>{ingredient}</li>)}*/}
+					{/*{post}*/}
 				</Typography>
 			</div>
 			<Typography className={classes.title}
@@ -43,7 +45,11 @@ const Post = ({post, setCurrentId}) => {
 			<CardContent>
 				<Typography variant="body2"
 				            color="textSecondary"
-				            component="p">{post.message}</Typography>
+				            component="p">hello
+					{/*{post.instruction.map((instruction) =>*/}
+					{/*	`${instruction}`*/}
+					{/*)}*/}
+				</Typography>
 			</CardContent>
 			<CardActions className={classes.cardActions}>
 				<Button size="small"

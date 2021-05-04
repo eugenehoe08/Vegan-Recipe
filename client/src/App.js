@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {AppBar, Container, Grid, Grow, Typography} from "@material-ui/core";
 import {useDispatch} from "react-redux";
-import memories from './images/memories.png';
+import recipe from './images/memories.png';
 import {getPosts} from './actions/posts';
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
@@ -20,9 +20,9 @@ const App = () => {
 			        color="inherit">
 				<Typography className={classes.heading} variant="h2"
 				            align="center">
-					Memories
+					Vegan Recipe
 				</Typography>
-				<img className={classes.image} src={memories}
+				<img className={classes.image} src={recipe}
 				     alt="memories"
 				     height="60"/>
 			</AppBar>
