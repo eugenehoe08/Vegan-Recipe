@@ -15,7 +15,7 @@ app.use(cors());
 app.use('/posts', postRoutes);
 
 app.get('/', (req,res) =>{
-	res.send("Hello to Recipe API");
+	res.send("Hello to Recipe cPI");
 })
 
 const CONNECTION_URL = "mongodb+srv://vegan:vegan123@cluster0.k4evn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
