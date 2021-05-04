@@ -7,10 +7,10 @@ import useStyles from './styles';
 
 const Posts = ({setCurrentId}) => {
 	const posts = useSelector((state) => state.posts)
-	console.log(posts);
+	// console.log(posts);
 	const classes = useStyles();
 
-	console.log(posts);
+	// console.log(posts);
 	return (
 		!posts.length ? <CircularProgress/> : (
 			<Grid className={classes.mainContainer}

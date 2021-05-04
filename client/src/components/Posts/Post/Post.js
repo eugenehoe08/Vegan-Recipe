@@ -34,7 +34,7 @@ const Post = ({post, setCurrentId}) => {
 			<div className={classes.details}>
 				<Typography variant="body2"
 				            color="textSecondary">
-					{/*{post.ingredient.map((ingredient) => <li>{ingredient}</li>)}*/}
+					{post.ingredient.map((ingredient) => <li>{ingredient}</li>)}
 					{/*{post}*/}
 				</Typography>
 			</div>
