@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Paper, TextField, Typography} from "@material-ui/core";
 import FileBase from "react-file-base64";
 import useStyles from './styles';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {createPost, updatePost} from "../../actions/posts";
-import {useSelector} from "react-redux";
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
@@ -14,7 +13,7 @@ const Form = ({currentId, setCurrentId}) => {
 	const [postData, setPostData] = useState({
 		creator: '',
 		title: '',
-		ingredient: [],
+		ingredient: [{name:'',amount:0}],
 		instruction: [],
 		selectedFile: ''
 	});
@@ -55,7 +54,7 @@ const Form = ({currentId, setCurrentId}) => {
 		setPostData({
 			creator: '',
 			title: '',
-			ingredient: [],
+			ingredient: [{name:'', amount: 0}],
 			instruction: [],
 			selectedFile: ''
 		});
@@ -96,9 +95,8 @@ const Form = ({currentId, setCurrentId}) => {
 		})
 		setIngredientInput(newIngredientInputFields);
 		setPostData({...postData, ingredient: ingredientInput.map(u=> {
-				return u.ingredient
+				return {name: u.ingredient, amount: u.amount};
 			})});
-		// console.log(postData);
 	};
 
 	const handleInstructionChangeInput = (id, event) => {
@@ -145,7 +143,7 @@ const Form = ({currentId, setCurrentId}) => {
 						           variant="outlined"
 						           label="Ingredient"
 						           fullWidth
-						           value={inputField.ingredient}
+						           value={inputField.name}
 						           onChange={(e) => handleIngredientChangeInput(inputField.id, e)}/>
 						<TextField name="amount"
 						           variant="outlined"

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
 	title: String,
-	ingredient: [{name: [String], amount: Number}],
+	ingredient: [{name: String, amount: String}],
 	creator: String,
 	instruction: [String],
 	selectedFile: String,
