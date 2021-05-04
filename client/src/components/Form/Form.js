@@ -13,12 +13,12 @@ const Form = ({currentId, setCurrentId}) => {
 	const [postData, setPostData] = useState({
 		creator: '',
 		title: '',
-		ingredient: [{name:'',amount:0}],
+		ingredient: [{name:'',amount:''}],
 		instruction: [],
 		selectedFile: ''
 	});
 	const [ingredientInput, setIngredientInput] = useState([{
-		id: uuidv4(), ingredient: '', amount : 0
+		id: uuidv4(), ingredient: '', amount : ''
 	}]);
 	const [instructionInput, setInstructionInput] = useState([{
 		id: uuidv4(), instruction: ''
@@ -54,12 +54,12 @@ const Form = ({currentId, setCurrentId}) => {
 		setPostData({
 			creator: '',
 			title: '',
-			ingredient: [{name:'', amount: 0}],
+			ingredient: [{name:'', amount: ''}],
 			instruction: [],
 			selectedFile: ''
 		});
 		setIngredientInput([{
-			id: uuidv4(), ingredient: '', amount:0
+			id: uuidv4(), ingredient: '', amount:''
 		}])
 		setInstructionInput([{
 			id: uuidv4(), instruction: ''
@@ -67,7 +67,7 @@ const Form = ({currentId, setCurrentId}) => {
 	}
 
 	const handleAddIngredientField = () => {
-		setIngredientInput([...ingredientInput, {id: uuidv4(), ingredient: '', amount: 0}])
+		setIngredientInput([...ingredientInput, {id: uuidv4(), ingredient: '', amount: ''}])
 	};
 
 	const handleRemoveIngredientField = (id) => {

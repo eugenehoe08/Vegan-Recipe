@@ -35,25 +35,23 @@ const Post = ({post, setCurrentId}) => {
 			            gutterBottom
 			            variant="h5"
 			            component="h2"> Created by: {post.creator} </Typography>
-			<h3 style={{marginLeft:"20px"}}>Ingredients:</h3>
+			<h3 style={{marginLeft: "20px"}}>Ingredients:</h3>
 			<div className={classes.details}>
 				<Typography variant="body2"
 				            color="textSecondary">
-					{post.ingredient.map((ingredient) => <li>{ingredient.name}: {ingredient.amount}</li>)}
+					{post.ingredient.map((ingredient) => <li><b>{ingredient.name}</b>: {ingredient.amount}</li>)}
 				</Typography>
 			</div>
-			<h3 style={{marginLeft:"20px"}}>Instructions:</h3>
-			{/*<CardContent className={classes.instructions}>*/}
-				<Typography variant="body2"
-				            color="textSecondary"
-				            component="p">
-					<ol>
-						{post.instruction.map((instruction) =>
-							<li>{instruction}</li>
-						)}
-					</ol>
-				</Typography>
-			{/*</CardContent>*/}
+			<h3 style={{marginLeft: "20px"}}>Instructions:</h3>
+			<Typography variant="body2"
+			            color="textSecondary"
+			            component="p">
+				<ol>
+					{post.instruction.map((instruction) =>
+						<li>{instruction}</li>
+					)}
+				</ol>
+			</Typography>
 			<CardActions className={classes.cardActions}>
 				<Button size="small"
 				        color="primary"
