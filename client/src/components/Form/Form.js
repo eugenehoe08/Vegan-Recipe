@@ -13,28 +13,35 @@ const Form = ({currentId, setCurrentId}) => {
 	const [postData, setPostData] = useState({
 		creator: '',
 		title: '',
-		ingredient: [{name:'',amount:''}],
+		ingredient: [{name: '', amount: ''}],
 		instruction: [],
 		selectedFile: ''
 	});
 	const [ingredientInput, setIngredientInput] = useState([{
-		id: uuidv4(), ingredient: '', amount : ''
+		id: uuidv4(), ingredient: '', amount: ''
 	}]);
 	const [instructionInput, setInstructionInput] = useState([{
 		id: uuidv4(), instruction: ''
 	}]);
+	// console.log(instructionInput);
 	const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (post) {
+			console.log("post changed");
 			setPostData(post);
-			// console.log(ingredientInput);
-			// setIngredientInput(post.ingredient);
-			// setInstructionInput(post.instruction);
-		};
+			setIngredientInput(post.ingredient.map(u => {
+				return {id: uuidv4(), ingredient: u.name, amount: u.amount};
+			}));
+			setInstructionInput(post.instruction.map(u => {
+				return {id: uuidv4(), instruction: u}
+			}));
+		}
 	}, [post])
+
+
 
 
 	const handleSubmit = (e) => {
@@ -54,12 +61,12 @@ const Form = ({currentId, setCurrentId}) => {
 		setPostData({
 			creator: '',
 			title: '',
-			ingredient: [{name:'', amount: ''}],
+			ingredient: [{name: '', amount: ''}],
 			instruction: [],
 			selectedFile: ''
 		});
 		setIngredientInput([{
-			id: uuidv4(), ingredient: '', amount:''
+			id: uuidv4(), ingredient: '', amount: ''
 		}])
 		setInstructionInput([{
 			id: uuidv4(), instruction: ''
@@ -74,6 +81,11 @@ const Form = ({currentId, setCurrentId}) => {
 		const values = [...ingredientInput];
 		values.splice(values.findIndex(value => value.id === id), 1);
 		setIngredientInput(values);
+		setPostData({
+			...postData, ingredient: values.map(u => {
+				return {name: u.ingredient, amount: u.amount}
+			})
+		});
 	};
 
 	const handleAddInstructionField = () => {
@@ -84,6 +96,12 @@ const Form = ({currentId, setCurrentId}) => {
 		const values = [...instructionInput];
 		values.splice(values.findIndex(value => value.id === id), 1);
 		setInstructionInput(values);
+		// console.log(instructionInput);
+		setPostData({
+			...postData, instruction: values.map(u => {
+				return u.instruction
+			})
+		});
 	};
 
 	const handleIngredientChangeInput = (id, event) => {
@@ -94,9 +112,11 @@ const Form = ({currentId, setCurrentId}) => {
 			return i;
 		})
 		setIngredientInput(newIngredientInputFields);
-		setPostData({...postData, ingredient: ingredientInput.map(u=> {
-				return {name: u.ingredient, amount: u.amount};
-			})});
+		setPostData({
+			...postData, ingredient: ingredientInput.map(u => {
+				return {name: u.ingredient, amount: u.amount}
+			})
+		});
 	};
 
 	const handleInstructionChangeInput = (id, event) => {
@@ -108,9 +128,11 @@ const Form = ({currentId, setCurrentId}) => {
 			return i;
 		})
 		setInstructionInput(newInstructionInputFields);
-		setPostData({...postData, instruction: instructionInput.map(u=> {
+		setPostData({
+			...postData, instruction: instructionInput.map(u => {
 				return u.instruction
-			})});
+			})
+		});
 		// console.log(postData);
 		// instructionInput.map((u)=> console.log(u.instruction));
 	};
